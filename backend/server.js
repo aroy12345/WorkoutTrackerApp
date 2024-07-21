@@ -16,6 +16,8 @@ app.use(express.json());
 
 const routes=require('./routes/workouts.js');
 
+const userRoutes=require('./routes/user.js');
+
 
 app.use((req, res, next)=>{
   console.log(req.path);
@@ -25,10 +27,12 @@ app.use((req, res, next)=>{
 
 app.use('/api/workouts',routes);
 
+app.use('/api/user',userRoutes);
+
 mongoose.connect(process.env.MONGO_URI)
 .then(()=>{
   app.listen(PORT, () => {
-    console.log("Conected to DB and We are listening on port " + PORT + "!");
+    console.log("Conected to DaB emand We are lfistening on port " + PORT + "!");
   })
 
 
